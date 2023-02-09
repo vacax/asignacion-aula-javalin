@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Ejemplo de asignación en aula");
         /**
-         *
+         * Configuración y arranque de Javalin.
          */
         var app = Javalin.create(javalinConfig -> {
                     javalinConfig.staticFiles.add(staticFileConfig -> {
@@ -44,9 +44,12 @@ public class Main {
             }
         });
 
+        /**
+         * Endpoint visualizado una vez autenticado el usuario.
+         */
         app.get("/", ctx -> {
             Usuario usuario = ctx.sessionAttribute(Constantes.USUARIO_LOGUEADO.name());
-            //
+            // Probando el uso de la libreria j2html
             String texto = html(
                     head(
                             title("Asignacion en Aula")
