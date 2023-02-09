@@ -37,7 +37,8 @@ public class Main {
             System.out.println("Logueado: "+Constantes.USUARIO_LOGUEADO.name());
             Usuario usuario = ctx.sessionAttribute(Constantes.USUARIO_LOGUEADO.name());
             /**
-             * Si, no
+             * Si, el usuario no está en la sesión, y la vista no es login.html y no es el endpoint de autenticar,
+             * lo mando al login.html, lo contrario continuamos con la peticion.
              */
             if(usuario== null && !(ctx.path().contains("login.html") || ctx.path().contains("/autenticar"))){
                 ctx.redirect("/login.html");
